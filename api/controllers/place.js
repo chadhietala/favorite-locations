@@ -10,12 +10,13 @@ exports.index = function ( req, res ) {
 };
 
 exports.createPlace = function ( req, res ) {
-  var place = new Place(req.body);
-  place.save(function(err) {
-    if (err) {
-      console.log( err )
-    } else  {
-      res.json({place: req.body})
-    }
-  });
+  console.log(req.body)
+  // var place = new Place(req.body);
+  // place.save(function(err) {
+  //   if (err) {
+  //     console.log( err )
+  //   } else  {
+  //     res.json({place: req.body})
+  //   }
+  // });
 }

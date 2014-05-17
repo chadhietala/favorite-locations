@@ -7,15 +7,17 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script>
-      window.ENV = {{ENV}};
-      document.write('<base href="' + ENV.rootURL + '" />');
-    </script>
+    {{BASE_TAG}}
 
-    <link rel="stylesheet" href="assets/app.css">
-    <script src="assets/app.js"></script>
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/favorite-locations.css">
   </head>
   <body>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyD1qYJveRboaw20NX9L7PELfDlmCc-4LT0&sensor=false&libraries=places&v=3.14"></script>
+    <script>
+      window.ENV = {{ENV}};
+    </script>
+    <script src="assets/favorite-locations.js"></script>
     <script>
       window.FavoriteLocations = require('favorite-locations/app')['default'].create(ENV.APP);
     </script>

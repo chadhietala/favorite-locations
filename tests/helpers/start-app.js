@@ -1,3 +1,5 @@
+/* global require */
+
 var Application = require('favorite-locations/app')['default'];
 var Router = require('favorite-locations/router')['default'];
 
