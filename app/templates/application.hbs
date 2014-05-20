@@ -11,14 +11,7 @@
     <div class="navbar-collapse collapse">
       <div class="navbar-form">
         <div class="form-group" style="display:inline;">
-          <div class="input-group">
-            {{google-map-autocomplete action="createNewPlace"}}
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button">
-                <span class="glyphicon glyphicon-map-marker"></span>
-              </button>
-            </span>
-          </div>
+          {{google-map-autocomplete action="createNewPlace" value=newAddress}}
         </div>
       </div>
     </div>

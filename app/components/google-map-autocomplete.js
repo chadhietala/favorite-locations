@@ -14,7 +14,6 @@ export default Ember.Component.extend({
   placeChanged: function () {
     var place = this.autocomplete.getPlace();
     this.sendAction('action', place);
-    this.set('value', '');
   }
 
 });

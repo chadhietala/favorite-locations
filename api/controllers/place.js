@@ -42,7 +42,8 @@ exports.updatePlace = function( req, res ) {
     if ( err ) {
       console.log( err );
     } else {
-      res.json(place);
+      place._id = id;
+      res.json({place: place});
     }
   });
 }

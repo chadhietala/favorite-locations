@@ -5,7 +5,7 @@ export default Ember.Component.extend({
     Ember.run.once(function () {
       this.marker.setMap(null);
       this.createMarker();
-      this.map.setCenter( this.get('center') )
+      this.map.setCenter( this.get('center') );
     }.bind(this));
 
   }.observes( 'center' ),
