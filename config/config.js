@@ -8,5 +8,12 @@ module.exports = {
     app: {
       name: 'Favorite Locations'
     }
+  },
+  production: {
+    db: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL,
+    rootPath: rootPath,
+    app: {
+      name: 'Favorite Locations'
+    }
   }
 };
