@@ -1,6 +1,8 @@
 /*globals google*/
 export default Ember.Component.extend({
   tagName: 'input',
+  attributeBindings: ['placeholder', 'value'],
+  placeholder: 'Add A New Location',
   classNames: 'form-control',
   address: null,
   createGeoCoder: function () {
@@ -12,6 +14,7 @@ export default Ember.Component.extend({
   placeChanged: function () {
     var place = this.autocomplete.getPlace();
     this.sendAction('action', place);
+    this.set('value', '');
   }
 
 });

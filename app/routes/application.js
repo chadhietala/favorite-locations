@@ -1,6 +1,7 @@
 export default Ember.Route.extend({
   actions: {
     createNewPlace: function (place) {
+
       var newPlace = this.store.createRecord('place', {
         address: place.formatted_address,
         name: place.name,
@@ -9,8 +10,14 @@ export default Ember.Route.extend({
           lng: place.geometry.location.pb
         }
       });
-      newPlace.save();
 
+      newPlace.save().then(function() {
+        this.controllerFor('place').setProperties({
+          currentLng: place.geometry.location.pb,
+          currentLat: place.geometry.location.ob,
+          currentAddr: place.formatted_address
+        });
+      }.bind(this));
     }
   }
 });

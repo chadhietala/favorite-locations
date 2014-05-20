@@ -10,13 +10,31 @@ exports.index = function ( req, res ) {
 };
 
 exports.createPlace = function ( req, res ) {
-  console.log(req.body)
-  // var place = new Place(req.body);
-  // place.save(function(err) {
-  //   if (err) {
-  //     console.log( err )
-  //   } else  {
-  //     res.json({place: req.body})
-  //   }
-  // });
-}
+  var body = req.body.place;
+
+  var place = new Place({
+    name: body.name,
+    address: body.address,
+    loc: {
+      lng: body.loc.lng,
+      lat: body.loc.lat
+    },
+    createdAt: body.createdAt
+  });
+
+  place.save(function(err) {
+    if (err) {
+      console.log( err )
+    } else  {
+      res.json(req.body);
+    }
+  });
+};
+
+exports.removePlace = function ( req, res ) {
+  var id = req.params.id;
+  console.log(Place.find( { _id: id }))
+  Place.find( { _id: id }).remove(function () {
+    res.json({});
+  });
+};
