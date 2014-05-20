@@ -1,6 +1,7 @@
 export default Ember.ArrayController.extend({
   sortBy: ['createdAt'],
   sortAcending: true,
+  isEditing: false,
 
   actions: {
     updateMap: function (place) {
@@ -9,6 +10,13 @@ export default Ember.ArrayController.extend({
         currentLat: place.get('loc.lat'),
         currentAddr: place.get('address')
       });
+    },
+    cancel: function ( place ) {
+      place.rollback();
+      this.set( 'isEditing', false );
+    },
+    editPlace: function () {
+      this.set( 'isEditing', true );
     }
   }
 });

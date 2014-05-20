@@ -11,14 +11,26 @@
     </thead>
     <tbody>
       {{#each}}
-      <tr>
-        <td>{{name}}</td>
-        <td>{{address}}</td>
-        <td>
-          <button class="btn btn-primary btn-xs" {{action "updateMap" this}}>See Location</button>
-          <button class="btn btn-default btn-xs" {{action "removePlace" this}}>Remove</button>
-        </td>
-      </tr>
+        {{#if isEditing}}
+          <tr>
+            <td>{{input value=name}}</td>
+            <td>{{input value=address}}</td>
+            <td>
+              <button class="btn btn-primary btn-xs" {{action "updatePlace" this}}>Save</button>
+              <button class="btn btn-default btn-xs" {{action "cancel" this}}>Cancel</button>
+            </td>
+          </tr>
+          {{else}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{address}}</td>
+            <td>
+              <button class="btn btn-primary btn-xs" {{action "updateMap" this}}>See Location</button>
+              <button class="btn btn-primary btn-xs" {{action "editPlace"}}>Edit</button>
+              <button class="btn btn-default btn-xs" {{action "removePlace" this}}>Remove</button>
+            </td>
+          </tr>
+        {{/if}}
       {{/each}}
     </tbody>
   </table>

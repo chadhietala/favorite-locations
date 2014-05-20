@@ -9,6 +9,9 @@ exports.index = function ( req, res ) {
   });
 };
 
+/**
+ * Creates a new place of interest.
+ */
 exports.createPlace = function ( req, res ) {
   var body = req.body.place;
 
@@ -31,9 +34,21 @@ exports.createPlace = function ( req, res ) {
   });
 };
 
+exports.updatePlace = function( req, res ) {
+  var id = req.params.id;
+  var place = req.body.place;
+
+  Place.update( { _id: id }, place, function(err) {
+    if ( err ) {
+      console.log( err );
+    } else {
+      res.json(place);
+    }
+  });
+}
+
 exports.removePlace = function ( req, res ) {
   var id = req.params.id;
-  console.log(Place.find( { _id: id }))
   Place.find( { _id: id }).remove(function () {
     res.json({});
   });

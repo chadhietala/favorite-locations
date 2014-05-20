@@ -21,6 +21,9 @@ export default Ember.Route.extend({
     removePlace: function ( place ) {
       place.deleteRecord();
       place.save();
+    },
+    updatePlace: function ( place ) {
+      place.save();
     }
   }
 });
